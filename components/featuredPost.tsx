@@ -16,10 +16,10 @@ const FeaturedPost = () => {
           <div className="popup-content max-w-full flex relative overflow-y-scroll overflow-x-hidden">
             
             <section className="text-gray-600 body-font">
-            <button onClick={() => setIsOpen(false)}> 
-            <Image className="w-10" src={closeButton} alt="src" />
+            <button  onClick={() => setIsOpen(false)}> 
+            <Image  width={35} height={35} src={closeButton} alt="closeButton" />
              </button>
-             <img className='pl-10 pt-10 w-62' src="./cat.webp" />
+             <Image className='pl-16 pt-10'  width={320} height={320} src="/cat.webp" alt="cat" />
              <span className="mt-1 ml-32 p-5 text-gray-500 text-sm">Jigsaw By S. KARACA</span> 
              <br></br>
              <span className="mt-1 ml-28 p-5 text-gray-500 text-sm"> 12 Jun 2019 at 03:00AM</span>

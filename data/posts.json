@@ -41,7 +41,7 @@
      "likes": 0  },
     {    
      "id":6 , 
-     "imgUrl":"./cat.webp",
+     "imgUrl":"/cat.webp",
       "title": "Pandemic Developer",  
       "preview": "Lorem ipsum dolor sit amet, consectetur...",
       "entry":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, metus at congue bibendum, velit leo bibendum velit, vel auctor velit velit euismod velit. ",  

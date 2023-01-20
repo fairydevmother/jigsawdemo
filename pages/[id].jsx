@@ -1,12 +1,12 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import Head from 'next/head'
 import Link from 'next/link'
 import Header from '../components/header'
 import Sidebar from '../components/sidebar';
+import Image from 'next/image'
 
-const Post = () => {
+export default function Post(){ 
   const router = useRouter()
   const { id } = router.query
   const [posts, setPosts] = useState([]);
@@ -21,7 +21,7 @@ const Post = () => {
     <div>
        {posts.map((post) => (
        post.id == id
-      ? (<div>
+      ? (<div key={post.id}>
         
         <div>
       <Head>
@@ -47,11 +47,12 @@ const Post = () => {
 
       <div  className="h-full w-full m-4 flex flex-wrap items-start justify-start rounded-tl grid-flow-col auto-cols-max gap-4 overflow-y-scroll">
 
-      <section key={post.id} className="text-gray-600 body-font ">
+      <section className="text-gray-600 body-font ">
             
-             <div  key={post.id}  className=' mt-1 ml-28 p-5'>
+             <div   className=' mt-1 ml-28 p-5'>
               <div>
-              <img className='w-44 mx-auto py-10'  src={post.imgUrl} alt={post.title} />
+                
+              <Image className='mx-auto py-10'  width={190} height={190} src={post.imgUrl} alt={post.title} />
               </div>
              <span className="ml-2 text-gray-500 text-sm">Jigsaw By S. KARACA</span> 
              <br></br>
@@ -148,6 +149,4 @@ const Post = () => {
       ))}
     </div>
   );
-}
-
-export default Post;
+ }

@@ -1,32 +1,25 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { Checkbox, Form, Input } from 'antd';
-import { Button, Popover } from 'antd';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 import Header from '../components/header'
 import Sidebar from '../components/sidebar';
-import Post from '../components/postModel';
-import FeaturedPost from '../components/featuredPost';
 import Image from 'next/image'
 
+import { useState, useEffect } from 'react';
 
-export default function Index() {
-  const [posts, setPosts] = useState([]);
+export default function Docs() {
+  const [docs, setDocs] = useState([]);
   useEffect(() => {
-    fetch('/api/posts')
+    fetch('/api/docs')
       .then((res) => res.json())
-      .then((data) => setPosts(data));
+      .then((data) => setDocs(data));
 
-  }, []);
+  }, []);  
   
-
-   
-  return ( 
-     <div>
+  
+  return (
+      <div>
       <Head>
-        <title>Jigsaw | Blog</title>
+        <title>Docs | Blog</title>
         <link rel="icon" href="/puzzle.png" />
         <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
 
@@ -37,7 +30,8 @@ export default function Index() {
   <div className="h-screen w-full bg-white relative flex overflow-hidden">
 
     <Sidebar />
-    
+
+
 
    <div className="w-full h-full flex flex-col justify-between">
   
@@ -47,80 +41,28 @@ export default function Index() {
 
       <div className="h-full w-full m-4 flex flex-wrap items-start justify-start rounded-tl grid-flow-col auto-cols-max gap-4 overflow-y-scroll">
 
-       <div className="w-full h-95 rounded-lg flex-shrink-0 flex-grow essayColor">
-                <section className="text-gray-600 body-font">
-                    <div className="container px-5 py-5 mx-auto">
-                        <div className="p-5 bg-white flex items-center mx-auto border-b  border-gray-200 rounded-lg sm:flex-row flex-col">
-                        <div className="sm:w-32 sm:h-32 h-72 w-72 sm:mr-10 inline-flex items-center justify-center flex-shrink-0">
-                        <Image className="h-24 w-72" height={24} width={72} src="/cat.webp" alt="src" />
-                        </div>
-                      
-                        <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-                            <h1 className="text-black text-2xl title-font font-bold mb-2">The Pandemic Developer</h1>
-                            <p className="leading-relaxed text-base">Story of me getting into tech and programming. </p>
-                            
-                            <div className="md:flex font-bold text-gray-800">
-                                <div className="w-full md:w-1/2 flex space-x-3">
-                                    <div className="w-1/2">
-                                        <h2 className="text-gray-500">Tag</h2>
-                                        <p>technology</p>
-                                    </div>
-                                    <div className="w-1/2">
-                                        <h2 className="text-gray-500">Tag</h2>
-                                        <p>programming</p>
-                                    </div>
-                                </div>
-                                <div className="w-full md:w-1/2 flex space-x-3">
-                                    <div className="w-1/2">
-                                        <h2 className="text-gray-500">Tag</h2>
-                                        <p>learning</p>
-                                    </div>
-                                </div>
-    
-                            </div>
-                              
-                           
-                             <a className="mt-3 text-indigo-500 inline-flex items-center">
-                               <FeaturedPost />
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                <path d="M5 12h14M12 5l7 7-7 7"></path>
-                            </svg> </a>
-                       
-     
-                           
-                        </div>
-                        </div>
-                    </div>
-                </section>
-           
-      </div>
-      {posts.map((post) => (
+       
+      {docs.map((doc) => (
    
-      <div key={post.id} className="w-96 rounded-lg flex-shrink-0 flex-grow essayColor">
+      <div key={doc.id} className="w-32 h-70 rounded-lg flex-shrink-0 flex-grow essayColor">
              
       <section className="text-gray-600 body-font">
-                    <div key={post.id} className="container px-5 py-5 mx-auto">
-                        <div className="p-5 bg-white flex items-center mx-auto border-b  border-gray-200 rounded-lg sm:flex-row flex-col">
+                    <div className="container px-5 py-5 mx-auto">
+                        <div className="p-5 bg-white h-50 flex items-center mx-auto border-b  border-gray-200 rounded-lg sm:flex-row flex-col">
                         <div className="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center flex-shrink-0">
-                            <img
-                              src={post.imgUrl} alt={post.title}/>
-                              
+                           <Image height={96} width={288} src={doc.imgUrl}  alt="src" />
                         </div>
                         <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-                        <Post key={post.id} post={post} />
                         
 
 
-                            <p className="leading-relaxed text-base">{post.preview} </p>
-                         <a className="mt-3 text-indigo-500 inline-flex items-center">   
+                            <p className="leading-relaxed text-base">{doc.title} </p>
+                         <Link href="/docs"  className="mt-3 text-indigo-500 inline-flex items-center">   
                         
-                         <Link key={post.id} href="/[id]" as={`/${post.id}`}>
-                          Read More
-                         </Link>
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                 <path d="M5 12h14M12 5l7 7-7 7"></path>
                             </svg>
-                            </a>
+                            </Link>
                         </div>
                         </div>
                     </div>
@@ -130,12 +72,22 @@ export default function Index() {
        ))}
      
     </div>
+
+
+
+
+
+
     
+
+
+
+
+
   </main>
-  
-</div>
 </div>
 
+</div>
 
 <style jsx>{`
         .bgColor{
@@ -149,12 +101,12 @@ export default function Index() {
         .custom-button{
           background-color:#7743DB;
         }
-        
       `}</style>
 
 
       
     </div>
-    
-  )
-}
+    )
+  }
+  
+  

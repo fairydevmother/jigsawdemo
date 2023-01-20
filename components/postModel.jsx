@@ -17,11 +17,11 @@ const Post = ({ post }) => {
             
             <section className="text-gray-600 body-font ">
             <button onClick={() => setIsOpen(false)}>
-            <Image className="w-10" src={closeButton} alt="src" />
+            <Image  width={35} height={35}  src={closeButton} alt="src" />
              </button>
              <div className=' mt-1 ml-28 p-5'>
               <div>
-              <img className='w-44 mx-auto py-10'  src={post.imgUrl} alt={post.title} />
+              <Image className='mx-auto py-10' width={160} height={160}  src={post.imgUrl} alt={post.title} />
               </div>
              <span className="ml-2 text-gray-500 text-sm">Jigsaw By S. KARACA</span> 
              <br></br>

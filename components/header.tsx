@@ -1,5 +1,5 @@
 import Link from 'next/link'
-
+import Image from 'next/image'
 const Header = () => {
   return (
 
@@ -18,7 +18,7 @@ const Header = () => {
      </div>
 
      <div className="h-10 w-10 rounded-full cursor-pointer bg-gray-200 border-2 border-blue-400">
-       <img src='./profile.png' />
+       <Image src='/profile.png' width={40} height={40} alt="profile" />
      </div>
       
    </div>
