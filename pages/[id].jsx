@@ -11,7 +11,7 @@ export default function Post(){
   const { id } = router.query
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch('/api/posts')
+    fetch('http://localhost:3000/api/posts')
       .then((res) => res.json())
       .then((data) => setPosts(data));
 

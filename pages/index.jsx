@@ -15,7 +15,7 @@ import Image from 'next/image'
 export default function Index() {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch('/api/posts')
+    fetch('http://localhost:3000/api/posts')
       .then((res) => res.json())
       .then((data) => setPosts(data));
 
