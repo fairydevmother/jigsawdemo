@@ -9,6 +9,8 @@ import Header from '../components/header'
 import Sidebar from '../components/sidebar';
 import Post from '../components/postModel';
 import FeaturedPost from '../components/featuredPost';
+import Image from 'next/image'
+
 
 export default function Index() {
   const [posts, setPosts] = useState([]);
@@ -35,8 +37,7 @@ export default function Index() {
   <div className="h-screen w-full bg-white relative flex overflow-hidden">
 
     <Sidebar />
-
-
+    
 
    <div className="w-full h-full flex flex-col justify-between">
   
@@ -51,8 +52,7 @@ export default function Index() {
                     <div className="container px-5 py-5 mx-auto">
                         <div className="p-5 bg-white flex items-center mx-auto border-b  border-gray-200 rounded-lg sm:flex-row flex-col">
                         <div className="sm:w-32 sm:h-32 h-72 w-72 sm:mr-10 inline-flex items-center justify-center flex-shrink-0">
-                            <img className='h-24 w-72'
-                              src="/cat.webp"/>
+                        <Image className="h-24 w-72" height={24} width={72} src="/cat.webp" alt="src" />
                         </div>
                       
                         <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
@@ -76,6 +76,7 @@ export default function Index() {
                                         <p>learning</p>
                                     </div>
                                 </div>
+    
                             </div>
                               
                            
@@ -103,6 +104,7 @@ export default function Index() {
                         <div className="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center flex-shrink-0">
                             <img
                               src={post.imgUrl} alt={post.title}/>
+                              
                         </div>
                         <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
                         <Post key={post.id} post={post} />
@@ -128,10 +130,12 @@ export default function Index() {
        ))}
      
     </div>
+    
   </main>
+  
+</div>
 </div>
 
-</div>
 
 <style jsx>{`
         .bgColor{
