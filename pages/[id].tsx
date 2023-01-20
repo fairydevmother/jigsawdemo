@@ -45,9 +45,9 @@ const Post = () => {
 
     <main className="max-w-full h-full flex relative overflow-y-hidden">
 
-      <div key={post.id} className="h-full w-full m-4 flex flex-wrap items-start justify-start rounded-tl grid-flow-col auto-cols-max gap-4 overflow-y-scroll">
+      <div  className="h-full w-full m-4 flex flex-wrap items-start justify-start rounded-tl grid-flow-col auto-cols-max gap-4 overflow-y-scroll">
 
-      <section className="text-gray-600 body-font ">
+      <section key={post.id} className="text-gray-600 body-font ">
             
              <div className=' mt-1 ml-28 p-5'>
               <div>
