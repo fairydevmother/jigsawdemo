@@ -49,7 +49,7 @@ const Post = () => {
 
       <section key={post.id} className="text-gray-600 body-font ">
             
-             <div className=' mt-1 ml-28 p-5'>
+             <div  key={post.id}  className=' mt-1 ml-28 p-5'>
               <div>
               <img className='w-44 mx-auto py-10'  src={post.imgUrl} alt={post.title} />
               </div>
