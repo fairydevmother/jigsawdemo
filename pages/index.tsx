@@ -99,7 +99,7 @@ export default function Index() {
       <div key={post.id} className="w-96 rounded-lg flex-shrink-0 flex-grow essayColor">
              
       <section className="text-gray-600 body-font">
-                    <div className="container px-5 py-5 mx-auto">
+                    <div key={post.id} className="container px-5 py-5 mx-auto">
                         <div className="p-5 bg-white flex items-center mx-auto border-b  border-gray-200 rounded-lg sm:flex-row flex-col">
                         <div className="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center flex-shrink-0">
                             <img
