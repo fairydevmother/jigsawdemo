@@ -58,7 +58,12 @@ export default function Index() {
                         </div>
                       
                         <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-                            <h1 className="text-black text-2xl title-font font-bold mb-2">The Pandemic Developer</h1>
+                          
+                            <Link href='' >
+                            <FeaturedPost />
+                            
+                            </Link>
+                            
                             <p className="leading-relaxed text-base">Story of me getting into tech and programming. </p>
                             
                             <div className="md:flex font-bold text-gray-800">
@@ -82,8 +87,8 @@ export default function Index() {
                             </div>
                               
                            
-                             <Link href="" className="mt-3 text-indigo-500 inline-flex items-center">
-                               <FeaturedPost />
+                             <Link href="/featured-post" className="mt-3 text-indigo-500 inline-flex items-center">
+                                Read More
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                 <path d="M5 12h14M12 5l7 7-7 7"></path>
                             </svg> </Link>
@@ -114,8 +119,10 @@ export default function Index() {
 
 
                             <p className="leading-relaxed text-base">{post.preview} </p>
+                           
                          
-                         <Link key={post.id} href="/[id]" as={`/${post.id}`}>
+
+                         <Link key={post.id} href="/[id]" as={`/${post.id}`} className="mt-3 text-indigo-500 inline-flex items-center">
                           Read More
                          
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">

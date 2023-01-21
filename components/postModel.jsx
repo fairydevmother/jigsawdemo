@@ -13,7 +13,7 @@ const Post = ({ post }) => {
 
 
   
-          <div className="popup-content max-w-full bg-blue-400  flex relative overflow-y-scroll overflow-x-hidden">
+          <div className="popup-content max-w-full bg-blue-400  flex relative  overflow-x-hidden">
             
             <section className="text-gray-600 body-font ">
             <button onClick={() => setIsOpen(false)}>
@@ -41,8 +41,11 @@ const Post = ({ post }) => {
                <p className="mb-3 text-xl font-light text-gray-500 dark:text-gray-400">    
                {post.content} </p>
 
-  <Link className='text-bold' key={post.id} href="/[id]" as={`/${post.id}`}>
+             <Link className="mt-3 text-indigo-500 inline-flex items-center" key={post.id} href="/[id]" as={`/${post.id}`}>
                           Read More
+                          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
                          </Link>
               <div className='text-center'>
             

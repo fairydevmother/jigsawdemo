@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import Image from 'next/image'
 import closeButton from './close.png'
-
+import Link from 'next/link'
 const FeaturedPost = () => {
     const [isOpen, setIsOpen] = useState(false);
     return (
       <>
         <button onClick={() => setIsOpen(true)}>
-          Read More
+        <h1 className="text-black text-2xl title-font font-bold mb-2">The Pandemic Developer</h1>
         </button>
         {isOpen && (
 
 
   
-          <div className="popup-content max-w-full flex relative overflow-y-scroll overflow-x-hidden">
+          <div className="popup-content max-w-full flex relative overflow-x-hidden">
             
             <section className="text-gray-600 body-font">
             <button  onClick={() => setIsOpen(false)}> 
@@ -37,7 +37,12 @@ const FeaturedPost = () => {
             
             
              </p>
-           
+             <Link className="mt-3 text-indigo-500 inline-flex items-center"  href="/featured-post" >
+                          Read More
+                          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                         </Link>
               <div className='text-center'>
               <span className="inline-block h-1 w-10 rounded bg-pink-500 mt-8 mb-6"></span>
               <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">S. KARACA</h2>
