@@ -5,6 +5,12 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 const API_URL = process.env.API_URL || 'http://localhost:3000';
+const cors = require('cors');
+app.use(cors({
+  origin: 'http://localhost:3000',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 app.prepare()
   .then(() => {
