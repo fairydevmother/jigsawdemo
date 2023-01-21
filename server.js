@@ -33,7 +33,13 @@ app.prepare()
       return handle(req, res);
     });
  
-      
+    server.on('request', (req, res) => {
+      if (req.url.startsWith('/api')) {
+        proxy.web(req, res, { target: 'https://localhost:3000' });
+      } else {
+        // handle other requests
+      }
+    });
     server.listen(3000, (err) => {
       if (err) throw err;
       console.log('> Ready on http://localhost:3000');

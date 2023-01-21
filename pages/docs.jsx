@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 export default function Docs() {
   const [docs, setDocs] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:3000/api/docs')
+    fetch('/api/docs')
       .then((res) => res.json())
       .then((data) => setDocs(data));
 
