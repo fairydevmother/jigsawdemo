@@ -10,7 +10,7 @@ export default function Docs() {
   const [docs, setDocs] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.API_URL}/api/docs`)
+    fetch(`${process.env.PORT}/api/docs`)
       .then((res) => res.json())
       .then((data) => setDocs(data));
 

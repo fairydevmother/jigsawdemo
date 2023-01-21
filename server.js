@@ -4,7 +4,7 @@ const db=require('./db');
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
-const API_URL = process.env.API_URL || 'http://localhost:3000';
+const API_URL = process.env.PORT || 'http://localhost:3000';
 
 app.prepare()
   .then(() => {

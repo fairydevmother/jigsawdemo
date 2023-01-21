@@ -15,7 +15,7 @@ import Image from 'next/image'
 export default function Index() {
   const [posts, setPosts] = useState([]);
   
-  const API_URL = process.env.API_URL || 'http://localhost:3000';
+  const API_URL = process.env.PORT || 'http://localhost:3000';
   useEffect(() => {
     fetch(`${API_URL}/api/posts`)
       .then((res) => res.json())
