@@ -4,6 +4,7 @@ const db=require('./db');
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
+const API_URL = process.env.API_URL || 'http://localhost:3000';
 
 app.prepare()
   .then(() => {
@@ -35,7 +36,7 @@ app.prepare()
  
     server.on('request', (req, res) => {
       if (req.url.startsWith('/api')) {
-        proxy.web(req, res, { target: 'https://localhost:3000' });
+        proxy.web(req, res, { target: API_URL });
       } else {
         // handle other requests
       }

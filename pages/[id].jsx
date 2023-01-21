@@ -8,10 +8,11 @@ import Image from 'next/image'
 
 export default function Post(){ 
   const router = useRouter()
+  const API_URL = process.env.API_URL || 'http://localhost:3000';
   const { id } = router.query
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:3000/api/posts')
+    fetch(`${API_URL}/api/posts`)
       .then((res) => res.json())
       .then((data) => setPosts(data));
 
