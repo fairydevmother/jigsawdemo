@@ -8,9 +8,9 @@ import { useState, useEffect } from 'react';
 
 export default function Docs() {
   const [docs, setDocs] = useState([]);
-
+  const API_URL = process.env.API_URL || 'http://localhost:3000';
   useEffect(() => {
-    fetch(`${process.env.PORT}/api/docs`)
+    fetch(`${API_URL}/api/docs`)
       .then((res) => res.json())
       .then((data) => setDocs(data));
 

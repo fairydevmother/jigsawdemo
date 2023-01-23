@@ -6,6 +6,7 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 const API_URL = process.env.PORT || 'http://localhost:3000';
 
+
 app.prepare()
   .then(() => {
     const server = express();
@@ -23,12 +24,12 @@ app.prepare()
         const post = db.getPostById(req.params.id);
         res.json(post);
       });
-      
+
       server.post('/api/post/:id/like', (req, res) => {
         const post = db.getPostById(req.params.id);
         db.updatePostLikes(req.params.id, post.likes + 1);
         res.json({ likes: post.likes + 1 });
-    });
+    }); 
 
     server.get('*', (req, res) => {
       return handle(req, res);
