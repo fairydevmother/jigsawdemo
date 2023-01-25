@@ -11,8 +11,8 @@ app.prepare()
   .then(() => {
     const server = express();
     server.get('/api/posts', (req, res) => {
-        const posts = db.getPosts();
-        res.json(posts);
+      const posts = JSON.parse(fs.readFileSync('./data/posts.json', 'utf8'));
+      return posts;
       });
       
       server.get('/api/docs', (req, res) => {
