@@ -1,32 +1,60 @@
 const express = require('express');
 const next = require('next');
-const db=require('./db');
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 const API_URL = process.env.PORT || 'http://localhost:3000';
+const Post = require("./model/Post");
+const mongoose = require('mongoose');
+const dotenv = require('dotenv')
+dotenv.config({path:__dirname+'/.env'});
+const dtb=require("./db")
+
+
+
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+const db = mongoose.connection;
+
+db.on('error', (error) => console.error(error));
+db.once('open', () => console.log('Connected to MongoDB'));
+
+const fetchPosts = async (req, res) => {
+  try {
+    const posts = await Post.find({});
+    res.status(200).send(posts);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
 
 
 app.prepare()
   .then(() => {
     const server = express();
-    server.get('/api/posts', (req, res) => {
-      const posts = JSON.parse(fs.readFileSync('./data/posts.json', 'utf8'));
-      return posts;
-      });
       
+    server.get('/api/posts', (req, res) => {
+      const posts = dtb.getPosts();
+      res.json(posts);
+    });
+       
       server.get('/api/docs', (req, res) => {
-        const docs = db.getDocs();
+        const docs = dtb.getDocs();
         res.json(docs);
       });
       
+
       server.get('/api/post/:id', (req, res) => {
-        const post = db.getPostById(req.params.id);
+        const post = dtb.getPostById(req.params.id);
         res.json(post);
       });
 
       server.post('/api/post/:id/like', (req, res) => {
-        const post = db.getPostById(req.params.id);
+        const post = dtb.getPostById(req.params.id);
         db.updatePostLikes(req.params.id, post.likes + 1);
         res.json({ likes: post.likes + 1 });
     }); 

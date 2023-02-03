@@ -11,21 +11,21 @@ import Post from '../components/postModel';
 import FeaturedPost from '../components/featuredPost';
 import Image from 'next/image'
 
-
 export default function Index() {
   const [posts, setPosts] = useState([]);
-  
-  const API_URL = process.env.PORT || 'http://localhost:3000';
+  const [error, setError] = useState(null);
+
   useEffect(() => {
-    fetch(`${API_URL}/api/posts`)
-      .then((res) => res.json())
-      .then((data) => setPosts(data));
-
+    axios.get('http://localhost:3000/api/posts')
+      .then(response => {
+        setPosts(response.data);
+      })
+      .catch(error => {
+        setError(error);
+      });
   }, []);
-  
-  
 
-   
+  
   return ( 
      <div>
       <Head>
@@ -102,7 +102,7 @@ export default function Index() {
                 </section>
            
       </div>
-      {posts.map((post) => (
+      {posts.map(post => (
    
       <div key={post.id} className="w-96 rounded-lg flex-shrink-0 flex-grow essayColor">
              
@@ -119,7 +119,7 @@ export default function Index() {
                         
 
 
-                            <p className="leading-relaxed text-base">{post.preview} </p>
+                            <p className="leading-relaxed text-base">{posts.content} </p>
                            
                          
 
@@ -137,7 +137,7 @@ export default function Index() {
 
       </div>
        ))}
-     
+  
     </div>
     
   </main>
@@ -167,3 +167,4 @@ export default function Index() {
     
   )
 }
+

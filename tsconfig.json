@@ -19,6 +19,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/[id].jsx", "pages/index.jsx", "pages/docs.jsx", "components/postModel.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/[id].jsx", "pages/index.js", "pages/docs.jsx", "components/postModel.jsx"],
   "exclude": ["node_modules"]
 }
